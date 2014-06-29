@@ -1,7 +1,7 @@
 Linux
 =====
 Usage
-  Debian:
     copy to /etc/init.d
     make it executable
-    run update-rc.d myscript defaults 
+    Debian: run update-rc.d myscript defaults
+    RedHad: run chkconfig --add myscript
