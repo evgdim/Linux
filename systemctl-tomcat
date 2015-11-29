@@ -1,0 +1,47 @@
+- Install java
+
+- sudo groupadd tomcat
+- sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
+
+- sudo mkdir /opt/tomcat
+- sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat 
+- cd /opt/tomcat
+- Change permissions:
+  sudo chgrp -R tomcat conf
+  sudo chmod g+rwx conf
+  sudo chmod g+r conf/*
+  sudo chown -R tomcat webapps/ work/ temp/ logs/
+  
+- Install Systemd Unit File
+  sudo chown -R tomcat webapps/ work/ temp/ logs/
+  
+  #######################################################################################################
+  # Systemd unit file for tomcat
+  [Unit]
+  Description=Apache Tomcat Web Application Container
+  After=syslog.target network.target
+  
+  [Service]
+  Type=forking
+  
+  Environment=JAVA_HOME=/usr/lib/jvm/jre
+  Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
+  Environment=CATALINA_HOME=/opt/tomcat
+  Environment=CATALINA_BASE=/opt/tomcat
+  Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+  Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+  
+  ExecStart=/opt/tomcat/bin/startup.sh
+  ExecStop=/bin/kill -15 $MAINPID
+  
+  User=tomcat
+  Group=tomcat
+  
+  [Install]
+  WantedBy=multi-user.target
+  
+  ##########################################################################################################
+  
+- sudo systemctl daemon-reload
+- sudo systemctl start tomcat
+- udo systemctl enable tomcat
