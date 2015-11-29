@@ -45,3 +45,6 @@
 - sudo systemctl daemon-reload
 - sudo systemctl start tomcat
 - udo systemctl enable tomcat
+
+- Check 
+  systemctl list-units  | grep tomcat
