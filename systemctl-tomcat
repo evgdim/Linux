@@ -11,9 +11,10 @@
   sudo chmod g+rwx conf
   sudo chmod g+r conf/*
   sudo chown -R tomcat webapps/ work/ temp/ logs/
+  sudo chown -R tomcat webapps/ work/ temp/ logs/
   
 - Install Systemd Unit File
-  sudo chown -R tomcat webapps/ work/ temp/ logs/
+  sudo vi /etc/systemd/system/tomcat.service
   
   #######################################################################################################
   # Systemd unit file for tomcat
