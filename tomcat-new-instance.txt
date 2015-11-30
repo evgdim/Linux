@@ -1,5 +1,12 @@
 - create CATALINA_BASE directory (myproject)
 - copy conf from CATALINA_HOME
+- put myproject.xml in conf/Catalina/localhost
+
+##########################################################
+<Context path="/myproject" reloadable="true" docBase="/path/to/myproject.war">  
+</Context>
+##########################################################
+
 - create bin, lib, logs, temp, webapps, work
 - create source file (myproject.env)
 
@@ -9,7 +16,7 @@ export JAVA_HOME=/applications/java/jdk1.7.0_60
 export CATALINA_HOME=/applications/tomcat/apache-tomcat-7.0.61
 export CATALINA_BASE=/var/applications/tomcat/myproject
 echo END
-########################################################
+##########################################################
 
 - $ source myproject.env
 - start tomcat
