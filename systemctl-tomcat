@@ -1,7 +1,7 @@
 - Install java
 
 - sudo groupadd tomcat
-- sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
+- sudo useradd -M -s /sbin/nologin -g tomcat -d /opt/tomcat tomcat
 
 - sudo mkdir /opt/tomcat
 - sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat 
